@@ -1,5 +1,6 @@
 ﻿using EDAS.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace EDAS.Api.Controllers
 {
@@ -21,9 +22,14 @@ namespace EDAS.Api.Controllers
         /// <param name="endDate">The end date of the historical data.</param>
         /// <returns>The historical segments data.</returns>
         [HttpGet("historical-segments")]
-        public async Task<IActionResult> GetHistoricalSegments([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        public async Task<IActionResult> GetHistoricalSegments([FromQuery][Required] DateTime? startDate, [FromQuery][Required] DateTime? endDate)
         {
-            var data = await _energyService.GetHistoricalSegmentsAsync(startDate, endDate);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var data = await _energyService.GetHistoricalSegmentsAsync(startDate.Value, endDate.Value);
             return Ok(data);
         }
 
@@ -35,9 +41,14 @@ namespace EDAS.Api.Controllers
         /// <param name="customerType">The type of customer.</param>
         /// <returns>The historical customer data.</returns>
         [HttpGet("historical-customer")]
-        public async Task<IActionResult> GetHistoricalCustomer([FromQuery] DateTime startDate, [FromQuery] DateTime endDate, [FromQuery] string customerType)
+        public async Task<IActionResult> GetHistoricalCustomer([FromQuery][Required] DateTime? startDate, [FromQuery][Required] DateTime? endDate, [FromQuery] string customerType)
         {
-            var data = await _energyService.GetHistoricalCustomerAsync(startDate, endDate, customerType);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var data = await _energyService.GetHistoricalCustomerAsync(startDate.Value, endDate.Value, customerType);
             return Ok(data);
         }
 
@@ -48,9 +59,14 @@ namespace EDAS.Api.Controllers
         /// <param name="endDate">The end date of the historical data.</param>
         /// <returns>The top segments for the customer.</returns>
         [HttpGet("top-segments-customer")]
-        public async Task<IActionResult> GetTopSegmentsCustomer([FromQuery] DateTime startDate, [FromQuery] DateTime endDate)
+        public async Task<IActionResult> GetTopSegmentsCustomer([FromQuery][Required] DateTime? startDate, [FromQuery][Required] DateTime? endDate)
         {
-            var data = await _energyService.GetTopSegmentsCustomerAsync(startDate, endDate);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var data = await _energyService.GetTopSegmentsCustomerAsync(startDate.Value, endDate.Value);
             return Ok(data);
         }
     }

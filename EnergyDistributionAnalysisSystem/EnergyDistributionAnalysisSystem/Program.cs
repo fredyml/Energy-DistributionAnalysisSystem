@@ -1,3 +1,4 @@
+using AspNetCoreRateLimit;
 using EDAS.Api.Filters;
 using EDAS.Application.Interfaces;
 using EDAS.Application.Services;
@@ -15,10 +16,21 @@ builder.Services.AddControllers(options =>
     options.Filters.Add<CustomExceptionFilter>();
 });
 
+builder.Services.AddOptions();
+builder.Services.AddMemoryCache();
+builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
+builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+builder.Services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
+
 builder.Services.AddScoped<IEnergyService, EnergyService>();
+
 builder.Services.AddScoped<IRepository, EFRepository>();
+
 builder.Services.AddDbContext<EnergyDistributionAnalysisSystemContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddScoped<ILoggerManager, LoggerManager>();
 builder.Host.UseNLog();
 
@@ -47,6 +59,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Energy Distribution Analysis System API v1");
     });
 }
+
+app.UseIpRateLimiting();
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
