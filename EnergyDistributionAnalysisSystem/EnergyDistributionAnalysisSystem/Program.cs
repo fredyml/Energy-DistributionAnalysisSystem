@@ -4,7 +4,9 @@ using EDAS.Application.Services;
 using EDAS.Infrastructure.Logger;
 using EDAS.Infrastructure.Persitence;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using NLog.Web;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,20 +21,34 @@ builder.Services.AddDbContext<EnergyDistributionAnalysisSystemContext>(options =
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<ILoggerManager, LoggerManager>();
 builder.Host.UseNLog();
+
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Energy Distribution Analysis System API", Version = "v1" });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
+});
 
 var app = builder.Build();
 
-
 if (app.Environment.IsDevelopment())
 {
+    
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Energy Distribution Analysis System API v1");
+    });
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.UseCors(options =>
