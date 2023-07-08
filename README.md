@@ -1,95 +1,94 @@
-# EnergyDistributionAnalysisSystem
 # Energy Distribution Analysis System
 
-El Energy Distribution Analysis System es una aplicación que permite a los clientes de una empresa de distribución de energía acceder a información ejecutiva para tomar decisiones informadas sobre el mantenimiento y la evaluación de los tramos de distribución de energía eléctrica. La aplicación utiliza datos históricos de consumo, costos y pérdidas proporcionados por el cliente para ofrecer información detallada sobre el rendimiento de los tramos.
+The Energy Distribution Analysis System is an application that allows customers of a power distribution company to access executive information to make informed decisions about maintenance and evaluation of different segments in the distribution of electrical energy. The application uses historical consumption, cost, and loss data provided by the customer to provide detailed insights into the performance of the segments.
 
-## Requerimientos
+## Requirements
 
-La aplicación debe proporcionar tres endpoints que permitan obtener información específica sobre los tramos de distribución de energía eléctrica:
+The application should provide three endpoints that allow retrieving specific information about the electrical energy distribution segments:
 
-### Request 1: Histórico de Consumos por Tramos
+### Request 1: Historical Consumption by Segments
 
-Este endpoint permite obtener un historial de consumo, pérdidas y costos por consumo para cada tramo dentro de un período de tiempo específico.
+This endpoint allows retrieving a history for each segment, including consumption, losses, and cost per consumption within a specified time period.
 
 **Endpoint:** GET /energy/historical-segments
 
-**Parámetros de consulta:**
-- startDate (obligatorio): Fecha inicial en formato 'yyyy-MM-dd'.
-- endDate (obligatorio): Fecha final en formato 'yyyy-MM-dd'.
+**Query Parameters:**
+- startDate (required): The start date of the historical data in 'yyyy-MM-dd' format.
+- endDate (required): The end date of the historical data in 'yyyy-MM-dd' format.
 
-**Respuesta:**
-La respuesta incluirá un objeto JSON con el historial de consumo, pérdidas y costos por consumo para cada tramo.
+**Response:**
+The response will include a JSON object with the historical data for each segment, including consumption, losses, and cost per consumption.
 
-### Request 2: Histórico de Consumos por Cliente
+### Request 2: Historical Consumption by Customer (Residential, Commercial, Industrial)
 
-Este endpoint permite obtener un historial de consumo, pérdidas y costos por consumo para cada tipo de cliente (residencial, comercial, industrial) dentro de un período de tiempo específico.
+This endpoint allows retrieving a history for each customer type (residential, commercial, industrial), including the segment, consumption, losses, and cost per consumption within a specified time period.
 
 **Endpoint:** GET /energy/historical-customer
 
-**Parámetros de consulta:**
-- startDate (obligatorio): Fecha inicial en formato 'yyyy-MM-dd'.
-- endDate (obligatorio): Fecha final en formato 'yyyy-MM-dd'.
-- customerType (obligatorio): Tipo de cliente ('residencial', 'comercial' o 'industrial').
+**Query Parameters:**
+- startDate (required): The start date of the historical data in 'yyyy-MM-dd' format.
+- endDate (required): The end date of the historical data in 'yyyy-MM-dd' format.
+- customerType (required): The customer type ('residential', 'commercial', or 'industrial').
 
-**Respuesta:**
-La respuesta incluirá un objeto JSON con el historial de consumo, pérdidas y costos por consumo para cada tipo de cliente.
+**Response:**
+The response will include a JSON object with the historical data for each customer type, including the segment, consumption, losses, and cost per consumption.
 
-### Request 3: Top 20 Peores Tramos/Cliente
+### Request 3: Top 20 Worst Segments/Customer
 
-Este endpoint permite obtener un listado de los 20 tramos/cliente con las mayores pérdidas dentro de un período de tiempo específico. Esto ayudará a identificar los tramos que generan mayores pérdidas y planificar acciones de mantenimiento correctivo o preventivo.
+This endpoint allows retrieving a list of the top 20 segments/customer with the highest losses within a specified time period. This helps identify the segments that generate the highest losses and plan corrective or preventive maintenance actions.
 
 **Endpoint:** GET /energy/top-segments-customer
 
-**Parámetros de consulta:**
-- startDate (obligatorio): Fecha inicial en formato 'yyyy-MM-dd'.
-- endDate (obligatorio): Fecha final en formato 'yyyy-MM-dd'.
+**Query Parameters:**
+- startDate (required): The start date of the historical data in 'yyyy-MM-dd' format.
+- endDate (required): The end date of the historical data in 'yyyy-MM-dd' format.
 
-**Respuesta:**
-La respuesta incluirá un objeto JSON con el listado de los 20 tramos/cliente con las mayores pérdidas.
+**Response:**
+The response will include a JSON object with the list of the top 20 segments/customer with the highest losses.
 
-## Arquitectura
+## Architecture
 
-El Energy Distribution Analysis System sigue una arquitectura limpia (Clean Architecture) para lograr una separación clara de responsabilidades y una fácil escalabilidad y mantenibilidad del sistema. La arquitectura consta de las siguientes capas:
+The Energy Distribution Analysis System follows a Clean Architecture approach to achieve a clear separation of concerns and easy scalability and maintainability of the system. The architecture consists of the following layers:
 
-- **Domain:** Contiene las entidades y reglas de negocio del dominio.
-- **Application:** Contiene los servicios de aplicación que implementan la lógica de la aplicación y orquestan las operaciones entre las capas de dominio e infraestructura.
-- **Infrastructure:** Contiene las implementaciones concretas de las interfaces definidas en las capas de dominio y aplicación. Incluye la persistencia de datos, la comunicación con servicios externos y otros componentes de infraestructura.
-- **API:** Contiene los controladores de la API que definen los endpoints y gestionan las solicitudes y respuestas HTTP. También incluye filtros y middleware para el manejo de excepciones y la configuración de la aplicación.
+- **Domain:** Contains the entities and business rules of the domain.
+- **Application:** Contains the application services that implement the application logic and orchestrate operations between the domain and infrastructure layers.
+- **Infrastructure:** Contains the concrete implementations of the interfaces defined in the domain and application layers. It includes data persistence, communication with external services, and other infrastructure components.
+- **API:** Contains the API controllers that define the endpoints and handle HTTP requests and responses. It also includes filters and middleware for exception handling and application configuration.
 
-## Tecnologías utilizadas
+## Technologies Used
 
-La aplicación utiliza las siguientes tecnologías y herramientas:
+The application utilizes the following technologies and tools:
 
-- ASP.NET Core: Framework para el desarrollo de aplicaciones web.
-- Entity Framework Core: ORM (Object-Relational Mapping) para el acceso a la base de datos.
-- SQL Server: Motor de base de datos relacional para almacenar los datos históricos.
-- NLog: Biblioteca para el registro de eventos y generación de logs.
-- Microsoft.Extensions.Logging: Biblioteca para el registro de eventos y generación de logs.
+- ASP.NET Core: Framework for web application development.
+- Entity Framework Core: Object-Relational Mapping (ORM) for database access.
+- SQL Server: Relational database engine for storing historical data.
+- NLog: Logging library for event logging and log generation.
+- Microsoft.Extensions.Logging: Logging library for event logging and log generation.
 
-## Configuración
+## Configuration
 
-La configuración de la aplicación se realiza a través del archivo `appsettings.json`, que se encuentra en la raíz del proyecto. En este archivo se pueden configurar los siguientes aspectos:
+The application configuration is done through the `appsettings.json` file located in the project's root. In this file, the following aspects can be configured:
 
-- Nivel de registro de eventos y generación de logs.
-- Cadena de conexión a la base de datos.
+- Event logging level and log generation.
+- Database connection string.
 
-## Ejecución
+## Execution
 
-Para ejecutar la aplicación, siga los siguientes pasos:
+To run the application, follow these steps:
 
-1. Asegúrese de tener instalado .NET Core SDK en su máquina.
-2. Clone el repositorio del Energy Distribution Analysis System.
-3. Navegue hasta el directorio raíz del proyecto en la línea de comandos.
-4. Ejecute el siguiente comando para compilar la aplicación:
+1. Make sure you have .NET Core SDK installed on your machine.
+2. Clone the Energy Distribution Analysis System repository.
+3. Navigate to the root directory of the project in the command line.
+4. Run the following command to build the application:
    ```
    dotnet build
    ```
-5. Ejecute el siguiente comando para iniciar la aplicación:
+5. Run the following command to start the application:
    ```
    dotnet run
    ```
-6. La aplicación estará disponible en la siguiente URL: `http://localhost:5000` o `https://localhost:5001` (si se habilitó HTTPS).
+6. The application will be available at the following URL: `http://localhost:5000` or `https://localhost:5001` (if HTTPS is enabled).
 
-## Equipo
+## Team
 
-El Energy Distribution Analysis System fue desarrollado por Fredy Mendoza.
+The Energy Distribution Analysis System was developed by Fredy Mendoza.
