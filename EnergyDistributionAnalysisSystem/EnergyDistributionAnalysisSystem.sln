@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33424.131
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDAS.Api", "EnergyDistributionAnalysisSystem\EDAS.Api.csproj", "{211D05F4-716A-4E50-B6CC-16549764F476}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDAS.Application", "EDAS.Application\EDAS.Application.csproj", "{199231E1-17E3-4778-A8CD-7E2AA50D1FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDAS.Domain", "EDAS.Domain\EDAS.Domain.csproj", "{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDAS.Infrastructure", "EDAS.Infrastructure\EDAS.Infrastructure.csproj", "{09C9309A-343F-43C3-ABCA-F792645D48FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDAS.Test", "EDAS.Test\EDAS.Test.csproj", "{35A03BBE-B307-497C-BE4C-7C31FA0791BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{E2F9A2C5-D8E3-4AF0-B17C-75ACD87F6519}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4C6DCC7C-D832-4A99-8A2C-2144FA40308F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B91E0DD0-CF9A-4DA1-B42C-9D21670441A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7293FD9E-E88B-45C9-B266-FBF3E2053A85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{211D05F4-716A-4E50-B6CC-16549764F476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211D05F4-716A-4E50-B6CC-16549764F476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211D05F4-716A-4E50-B6CC-16549764F476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211D05F4-716A-4E50-B6CC-16549764F476}.Release|Any CPU.Build.0 = Release|Any CPU
+		{199231E1-17E3-4778-A8CD-7E2AA50D1FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199231E1-17E3-4778-A8CD-7E2AA50D1FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199231E1-17E3-4778-A8CD-7E2AA50D1FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199231E1-17E3-4778-A8CD-7E2AA50D1FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C9309A-343F-43C3-ABCA-F792645D48FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C9309A-343F-43C3-ABCA-F792645D48FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C9309A-343F-43C3-ABCA-F792645D48FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C9309A-343F-43C3-ABCA-F792645D48FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A03BBE-B307-497C-BE4C-7C31FA0791BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A03BBE-B307-497C-BE4C-7C31FA0791BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A03BBE-B307-497C-BE4C-7C31FA0791BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A03BBE-B307-497C-BE4C-7C31FA0791BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{211D05F4-716A-4E50-B6CC-16549764F476} = {E2F9A2C5-D8E3-4AF0-B17C-75ACD87F6519}
+		{199231E1-17E3-4778-A8CD-7E2AA50D1FE1} = {4C6DCC7C-D832-4A99-8A2C-2144FA40308F}
+		{C00CD2B4-DE98-4D5E-9BF7-5C58C99B0F03} = {4C6DCC7C-D832-4A99-8A2C-2144FA40308F}
+		{09C9309A-343F-43C3-ABCA-F792645D48FF} = {B91E0DD0-CF9A-4DA1-B42C-9D21670441A0}
+		{35A03BBE-B307-497C-BE4C-7C31FA0791BE} = {7293FD9E-E88B-45C9-B266-FBF3E2053A85}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4F7A9743-B929-4AA0-9632-A89DB329E47E}
+	EndGlobalSection
+EndGlobal
