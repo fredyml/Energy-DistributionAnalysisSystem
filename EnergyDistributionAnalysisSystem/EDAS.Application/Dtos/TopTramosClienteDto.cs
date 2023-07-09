@@ -2,8 +2,7 @@
 {
     public class TopTramosClienteDto
     {
-        public string TipoCliente { get; set; }
-        public string Tramo { get; set; }
-        public decimal? Perdidas { get; set; }
+        public string Tramo { get; set; } = string.Empty;
+        public double Perdidas { get; set; }
     }
 }

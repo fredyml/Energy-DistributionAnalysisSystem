@@ -1,16 +1,16 @@
 ﻿namespace EDAS.Domain.Models
 {
-    public partial class Fecha
+    public partial class Linea
     {
-        public Fecha()
+        public Linea()
         {
             Consumos = new HashSet<Consumo>();
             Costos = new HashSet<Costo>();
             Perdida = new HashSet<Perdidum>();
         }
 
-        public int FechaId { get; set; }
-        public DateTime Fecha1 { get; set; }
+        public int LineaId { get; set; }
+        public string Nombre { get; set; } = null!;
 
         public virtual ICollection<Consumo> Consumos { get; set; }
         public virtual ICollection<Costo> Costos { get; set; }
