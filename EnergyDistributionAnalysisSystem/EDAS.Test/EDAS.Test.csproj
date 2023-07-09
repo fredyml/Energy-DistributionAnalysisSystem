@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="6.11.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
@@ -32,10 +33,6 @@
   <ItemGroup>
     <ProjectReference Include="..\EDAS.Application\EDAS.Application.csproj" />
     <ProjectReference Include="..\EDAS.Infrastructure\EDAS.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\" />
   </ItemGroup>
 
 </Project>
